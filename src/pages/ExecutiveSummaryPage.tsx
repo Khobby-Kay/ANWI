@@ -390,7 +390,7 @@ export function ExecutiveSummaryPage() {
             <p className="mt-4 text-sm leading-relaxed text-anwi-muted">
               Africa Next Workforce Index ({new Date().getFullYear()}). &ldquo;Executive Summary:
               The State of Africa&apos;s Next Workforce.&rdquo; ANWI. Retrieved {today}. Available
-              at: https://anwi.africa/executive-summary
+              at: {brand.siteUrl}/executive-summary
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-4">

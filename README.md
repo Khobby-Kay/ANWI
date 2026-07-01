@@ -36,9 +36,9 @@ Rwanda, Kenya, Mauritius, South Africa, Ghana, Morocco, Nigeria, Tunisia, Egypt,
 
 The site deploys automatically to GitHub Pages on push to `main`. Alternative hosts:
 
-- **Vercel:** Connect repo — `vercel.json` includes SPA rewrites
+- **Vercel (production):** [https://anwi.vercel.app](https://anwi.vercel.app) — `vercel.json` includes SPA rewrites
 - **Netlify:** Connect repo — `public/_redirects` handles client-side routing
-- **Custom domain:** Point `anwi.africa` DNS to your host; no `base` path change needed
+- **GitHub Pages:** [https://khobby-kay.github.io/ANWI/](https://khobby-kay.github.io/ANWI/) — auto-deploys on push to `main`
 
 ```bash
 npm run build:pdf   # Generate methodology PDF
@@ -71,7 +71,7 @@ No cross-linking until both products are ready.
 2. ✅ Methodology PDF (full paper)
 3. ✅ Expand to 20+ countries
 4. ⬜ Inaugural report: *State of Africa's Next Workforce 2027*
-5. ⬜ Deploy to production (anwi.africa) — CI/CD ready; connect repo + DNS
+5. ✅ Deploy to production — [anwi.vercel.app](https://anwi.vercel.app)
 
 ## Contact
 

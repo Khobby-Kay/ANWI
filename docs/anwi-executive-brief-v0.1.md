@@ -119,9 +119,9 @@ ANWI v0.1 scores are **pilot estimates** built from public data sources, institu
 
 ## 7. Suggested Citation
 
-Africa Next Workforce Index (2026). "Executive Brief: The State of Africa's Next Workforce." ANWI. Retrieved July 2026. Available at: https://anwi.africa/executive-summary
+Africa Next Workforce Index (2026). "Executive Brief: The State of Africa's Next Workforce." ANWI. Retrieved July 2026. Available at: https://anwi.vercel.app/executive-summary
 
-Full methodology: https://anwi.africa/methodology
+Full methodology: https://anwi.vercel.app/methodology
 
 ---
 
@@ -129,4 +129,4 @@ Full methodology: https://anwi.africa/methodology
 
 **Research & Methodology:** research@anwi.africa  
 **Partnerships:** research@anwi.africa  
-**Web:** https://anwi.africa
+**Web:** https://anwi.vercel.app
