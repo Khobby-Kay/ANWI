@@ -59,7 +59,7 @@ body {
   background-image:
     linear-gradient(105deg, rgba(13, 17, 23, 0.97) 0%, rgba(13, 17, 23, 0.88) 42%, rgba(13, 17, 23, 0.55) 68%, rgba(13, 17, 23, 0.35) 100%),
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
-    url('/anwi-hero-africa.jpg');
+    url('/anwi-hero-africa.webp');
   background-size: cover, auto, cover;
   background-position: center, center, center right;
   background-repeat: no-repeat;
@@ -123,7 +123,7 @@ body {
   background-image:
     linear-gradient(105deg, rgba(13, 17, 23, 0.94) 0%, rgba(13, 17, 23, 0.82) 50%, rgba(13, 17, 23, 0.6) 100%),
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
-    url('/anwi-hero-africa.jpg');
+    url('/anwi-hero-africa.webp');
   background-size: cover, auto, cover;
   background-position: center, center, center;
   background-repeat: no-repeat;
@@ -187,4 +187,99 @@ body {
 
 .skip-link {
   @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-anwi-gold focus:px-4 focus:py-2 focus:text-anwi-navy focus:outline-none;
+}
+
+/* ── Scroll reveal animations (AAGI-style) ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.card,
+.stat-card {
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover,
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.btn-outline:active {
+  transform: scale(0.98);
+}
+
+/* ── App loading shell (AAGI-style) ── */
+
+.app-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d1117;
+  transition: opacity 0.4s ease;
+}
+
+.app-shell-logo {
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+
+.app-shell-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(200, 169, 81, 0.2);
+  border-top-color: #c8a951;
+  border-radius: 50%;
+  animation: shell-spin 0.8s linear infinite;
+}
+
+@keyframes shell-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-quote {
+  @apply border-l-4 border-anwi-gold bg-anwi-bg-subtle py-4 pl-6 pr-4 text-lg italic leading-relaxed text-anwi-navy;
+  font-family: var(--font-serif);
+}
+
+.office-card {
+  @apply rounded-2xl border border-anwi-border bg-white p-6 text-center transition-all hover:border-anwi-gold/40 hover:shadow-md;
 }

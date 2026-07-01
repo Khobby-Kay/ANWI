@@ -7,6 +7,9 @@ export const brand = {
   founder: 'Aikins Armstrong',
   siteUrl: 'https://anwi.vercel.app',
   contactEmail: 'research@anwi.africa',
+  partnershipsEmail: 'research@anwi.africa',
+  pressEmail: 'research@anwi.africa',
+  headquarters: 'Accra, Ghana',
   disclaimer:
     'ANWI v0.1 scores are pilot estimates built from public data and expert review. They are not official government statistics. Methodology and sources are documented for transparency.',
 } as const

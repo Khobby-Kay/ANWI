@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Footer } from './Footer'
 import { Header } from './Header'
+import { AppShell } from './AppShell'
 
 function CookieBanner() {
   const [visible, setVisible] = useState(false)
@@ -45,6 +46,7 @@ function CookieBanner() {
 export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
+      <AppShell />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
