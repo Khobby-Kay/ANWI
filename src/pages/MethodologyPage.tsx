@@ -1,5 +1,6 @@
 import { brand } from '../config/brand'
 import { countries } from '../config/countries'
+import { downloads } from '../config/downloads'
 import { pillars } from '../config/pillars'
 import { Download } from 'lucide-react'
 import { SectionHeading } from '../components/SectionHeading'
@@ -17,10 +18,16 @@ export function MethodologyPage() {
             Open, reproducible, and honest about limitations. This is a pilot methodology — not a
             final statistical standard.
           </p>
-          <a href="/anwi-methodology-v0.1.pdf" download className="btn-primary mt-8">
-            <Download className="h-4 w-4" />
-            Download methodology paper (PDF)
-          </a>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href={downloads.methodology.path} download className="btn-primary">
+              <Download className="h-4 w-4" />
+              Download methodology paper (PDF)
+            </a>
+            <a href={downloads.brief.path} download className="btn-secondary">
+              <Download className="h-4 w-4" />
+              Download executive brief (PDF)
+            </a>
+          </div>
         </div>
       </section>
 

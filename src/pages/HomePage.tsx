@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Download } from 'lucide-react'
 import { brand } from '../config/brand'
 import { countries } from '../config/countries'
+import { downloads } from '../config/downloads'
 import { pillars } from '../config/pillars'
 import { SectionHeading } from '../components/SectionHeading'
 
@@ -20,19 +21,32 @@ export function HomePage() {
       <section className="hero-dark relative flex min-h-[85vh] flex-col justify-center pb-0 pt-8 md:min-h-[90vh]">
         <div className="container-anwi flex-1 py-16 md:py-24">
           <div className="max-w-4xl">
-            <h1 className="hero-title">Africa&apos;s Next Workforce Standard</h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="badge-gold">{brand.edition}</span>
+              <Link
+                to="/executive-summary"
+                className="badge-new transition hover:bg-emerald-500/25"
+              >
+                Executive Summary
+              </Link>
+            </div>
+            <h1 className="hero-title mt-6">Africa&apos;s Next Workforce Standard</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
               The independent framework built to assess how African nations convert youth into
               productive participation in an AI-shaped economy — across {countries.length} pilot
               countries, {pillars.length} pillars, and {INDICATORS_PER_COUNTRY} indicators.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/methodology" className="btn-primary">
-                Explore the Methodology
-                <ArrowRight className="h-4 w-4" />
+              <a href={downloads.brief.path} download className="btn-primary">
+                <Download className="h-4 w-4" />
+                Download Full Brief
+              </a>
+              <Link to="/methodology" className="btn-secondary">
+                View Methodology
               </Link>
-              <Link to="/compare" className="btn-secondary">
-                View the Compare Tool
+              <Link to="/executive-summary" className="btn-secondary">
+                Executive Summary
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -166,9 +180,13 @@ export function HomePage() {
                 ))}
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="/anwi-methodology-v0.1.pdf" download className="btn-primary">
+                <a href={downloads.brief.path} download className="btn-primary">
                   <Download className="h-4 w-4" />
-                  Read the Full Report
+                  Download Full Brief
+                </a>
+                <a href={downloads.methodology.path} download className="btn-secondary">
+                  <Download className="h-4 w-4" />
+                  Methodology Report
                 </a>
                 <Link to="/methodology" className="btn-secondary">
                   View Methodology
