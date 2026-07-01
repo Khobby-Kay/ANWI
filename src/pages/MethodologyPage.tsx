@@ -2,34 +2,33 @@ import { brand } from '../config/brand'
 import { countries } from '../config/countries'
 import { pillars } from '../config/pillars'
 import { Download } from 'lucide-react'
+import { SectionHeading } from '../components/SectionHeading'
 
 export function MethodologyPage() {
   return (
     <>
       <section className="page-hero">
-        <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-anwi-gold">Methodology</p>
-          <h1 className="mt-2 text-4xl font-bold">How ANWI v{brand.version} works</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">
-            Open, reproducible, and honest about limitations. This is a pilot methodology — not
-            a final statistical standard.
+        <div className="container-anwi">
+          <p className="section-label">Methodology</p>
+          <h1 className="hero-title mt-3 text-4xl md:text-5xl">
+            How ANWI v{brand.version} works
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/60">
+            Open, reproducible, and honest about limitations. This is a pilot methodology — not a
+            final statistical standard.
           </p>
-          <a
-            href="/anwi-methodology-v0.1.pdf"
-            download
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-anwi-gold px-5 py-2.5 text-sm font-semibold text-anwi-navy transition hover:bg-anwi-gold/90"
-          >
-            <Download className="h-4 w-4" aria-hidden />
+          <a href="/anwi-methodology-v0.1.pdf" download className="btn-primary mt-8">
+            <Download className="h-4 w-4" />
             Download methodology paper (PDF)
           </a>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-3xl space-y-12">
+      <section className="section-padding bg-anwi-bg">
+        <div className="container-anwi mx-auto max-w-3xl space-y-16">
           <article>
-            <h2 className="text-2xl font-bold text-anwi-navy">Purpose</h2>
-            <p className="mt-4 text-anwi-slate leading-relaxed">
+            <SectionHeading label="Purpose" title="Why ANWI exists" />
+            <p className="mt-6 text-anwi-muted leading-relaxed">
               The Africa Next Workforce Index (ANWI) answers one question:{' '}
               <strong className="text-anwi-navy">
                 Is this country converting its young population into productive participation in an
@@ -41,30 +40,35 @@ export function MethodologyPage() {
           </article>
 
           <article>
-            <h2 className="text-2xl font-bold text-anwi-navy">Scoring framework</h2>
-            <p className="mt-4 text-anwi-slate leading-relaxed">
+            <SectionHeading label="Framework" title="Scoring framework" />
+            <p className="mt-6 text-anwi-muted leading-relaxed">
               Each country receives a score from 0–100 on six pillars. Pillar scores are weighted
               and aggregated into an overall ANWI score. Indicator-level scores within each pillar
               are averaged unless noted otherwise.
             </p>
-            <ul className="mt-6 space-y-4">
-              {pillars.map((p) => (
+            <ul className="mt-8 space-y-4">
+              {pillars.map((p, i) => (
                 <li key={p.id} className="card">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-semibold text-anwi-navy">{p.name}</h3>
-                    <span className="shrink-0 rounded bg-anwi-teal/10 px-2 py-1 text-xs font-semibold text-anwi-teal">
-                      {(p.weight * 100).toFixed(0)}% weight
-                    </span>
+                    <div className="flex items-start gap-3">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-anwi-gold/15 text-xs font-bold text-anwi-gold-dark">
+                        {i + 1}
+                      </span>
+                      <div>
+                        <h3 className="font-semibold text-anwi-navy">{p.name}</h3>
+                        <p className="mt-1 text-sm text-anwi-muted">{p.description}</p>
+                      </div>
+                    </div>
+                    <span className="badge-gold shrink-0">{(p.weight * 100).toFixed(0)}%</span>
                   </div>
-                  <p className="mt-2 text-sm text-anwi-slate">{p.description}</p>
                 </li>
               ))}
             </ul>
           </article>
 
           <article>
-            <h2 className="text-2xl font-bold text-anwi-navy">Data sources (v0.1)</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-anwi-slate">
+            <SectionHeading label="Sources" title="Data sources (v0.1)" />
+            <ul className="mt-6 list-disc space-y-2 pl-5 text-anwi-muted">
               <li>World Bank World Development Indicators &amp; education datasets</li>
               <li>ILO youth employment and NEET statistics</li>
               <li>National statistical agencies (country-specific)</li>
@@ -74,8 +78,8 @@ export function MethodologyPage() {
           </article>
 
           <article>
-            <h2 className="text-2xl font-bold text-anwi-navy">Pilot limitations</h2>
-            <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-6 text-sm text-amber-950">
+            <SectionHeading label="Limitations" title="Pilot limitations" />
+            <div className="mt-6 rounded-2xl border border-amber-200/80 bg-amber-50 p-6 text-sm text-amber-950">
               <ul className="list-disc space-y-2 pl-5">
                 <li>v0.1 covers {countries.length} countries — not the full continent.</li>
                 <li>Some indicators use expert estimates where public data is incomplete.</li>
@@ -86,12 +90,12 @@ export function MethodologyPage() {
           </article>
 
           <article>
-            <h2 className="text-2xl font-bold text-anwi-navy">Roadmap</h2>
-            <ol className="mt-4 list-decimal space-y-3 pl-5 text-anwi-slate">
-              <li className="text-anwi-teal font-medium">
+            <SectionHeading label="Roadmap" title="What's next" />
+            <ol className="mt-6 list-decimal space-y-3 pl-5 text-anwi-muted">
+              <li className="font-medium text-anwi-gold-dark">
                 Publish full methodology paper (PDF) — Q3 2026 ✓
               </li>
-              <li className="text-anwi-teal font-medium">
+              <li className="font-medium text-anwi-gold-dark">
                 Expand to 20+ countries with verified primary data ✓
               </li>
               <li>Launch inaugural report: <em>State of Africa&apos;s Next Workforce 2027</em></li>

@@ -3,6 +3,7 @@ import { brand } from '../config/brand'
 import { countries, countryByCode, defaultCompareCodes } from '../config/countries'
 import { pillars } from '../config/pillars'
 import { OverallScoreCards, PillarChart } from '../components/PillarChart'
+import { SectionHeading } from '../components/SectionHeading'
 
 const MAX_SELECTION = 4
 
@@ -27,20 +28,20 @@ export function ComparePage() {
   return (
     <>
       <section className="page-hero">
-        <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-anwi-gold">Compare</p>
-          <h1 className="mt-2 text-4xl font-bold">Country Comparison</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">
+        <div className="container-anwi">
+          <p className="section-label">Compare</p>
+          <h1 className="hero-title mt-3 text-4xl md:text-5xl">Country Comparison</h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/60">
             Select up to four countries to compare ANWI pillar scores. Scores are normalized 0–100.
           </p>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-6xl">
+      <section className="section-padding bg-anwi-bg">
+        <div className="container-anwi">
           <div className="card mb-8">
-            <h2 className="font-semibold text-anwi-navy">Select countries</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <SectionHeading label="Selection" title="Select countries" />
+            <div className="mt-6 flex flex-wrap gap-2">
               {countries.map((c) => {
                 const active = selected.includes(c.code)
                 return (
@@ -48,18 +49,14 @@ export function ComparePage() {
                     key={c.code}
                     type="button"
                     onClick={() => toggleCountry(c.code)}
-                    className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                      active
-                        ? 'border-anwi-teal bg-anwi-teal text-white'
-                        : 'border-slate-200 bg-white text-anwi-slate hover:border-anwi-teal'
-                    }`}
+                    className={active ? 'country-pill-active' : 'country-pill'}
                   >
                     {c.name} ({c.overallScore})
                   </button>
                 )
               })}
             </div>
-            <p className="mt-3 text-xs text-anwi-slate">
+            <p className="mt-4 text-xs text-anwi-muted">
               {selected.length}/{MAX_SELECTION} selected · {brand.disclaimer}
             </p>
           </div>
@@ -76,12 +73,12 @@ export function ComparePage() {
 
             <div className="card overflow-x-auto">
               <h2 className="text-lg font-semibold text-anwi-navy">Detailed indicators</h2>
-              <table className="mt-4 w-full min-w-[480px] text-left text-sm">
+              <table className="anwi-table mt-4 w-full min-w-[480px] text-left">
                 <thead>
-                  <tr className="border-b border-slate-200 text-anwi-slate">
-                    <th className="pb-2 pr-4 font-medium">Indicator</th>
+                  <tr>
+                    <th className="pr-4">Indicator</th>
                     {selectedCountries.map((c) => (
-                      <th key={c.code} className="pb-2 px-2 text-center font-medium">
+                      <th key={c.code} className="px-2 text-center">
                         {c.code}
                       </th>
                     ))}
@@ -89,10 +86,11 @@ export function ComparePage() {
                 </thead>
                 <tbody>
                   {pillars.map((pillar) => {
-                    const indicators = countryByCode[selected[0]]?.pillars[pillar.id].indicators ?? []
+                    const indicators =
+                      countryByCode[selected[0]]?.pillars[pillar.id].indicators ?? []
                     return (
                       <Fragment key={pillar.id}>
-                        <tr className="bg-slate-50">
+                        <tr className="bg-anwi-bg-subtle">
                           <td
                             colSpan={selectedCountries.length + 1}
                             className="py-2 pr-4 font-semibold text-anwi-navy"
@@ -101,12 +99,12 @@ export function ComparePage() {
                           </td>
                         </tr>
                         {indicators.map((ind, idx) => (
-                          <tr key={`${pillar.id}-${ind.id}`} className="border-b border-slate-100">
-                            <td className="py-2 pr-4 text-anwi-slate">{ind.label}</td>
+                          <tr key={`${pillar.id}-${ind.id}`}>
+                            <td className="pr-4 text-anwi-muted">{ind.label}</td>
                             {selectedCountries.map((c) => (
                               <td
                                 key={c.code}
-                                className="py-2 px-2 text-center font-medium text-anwi-navy"
+                                className="px-2 text-center font-medium text-anwi-navy"
                               >
                                 {c.pillars[pillar.id].indicators[idx]?.score ?? '—'}
                               </td>
