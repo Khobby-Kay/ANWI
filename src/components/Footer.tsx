@@ -14,13 +14,11 @@ export function Footer() {
       <div className="container-anwi section-padding pb-8 pt-16 md:pt-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3">
-              <img src="/anwi-logo.svg" alt="" className="h-10 w-10" />
-              <div>
-                <p className="font-bold text-anwi-navy">{brand.shortName}</p>
-                <p className="text-xs text-anwi-muted">Africa Next Workforce Index</p>
-              </div>
-            </div>
+            <img
+              src="/anwi-logo.svg"
+              alt="ANWI — Africa Next Workforce Index"
+              className="h-10 w-auto"
+            />
             <p className="mt-4 text-sm leading-relaxed text-anwi-muted">
               Measuring how African nations convert youth into productive participation in an
               AI-shaped economy.

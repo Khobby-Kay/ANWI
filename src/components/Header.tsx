@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ChevronDown, Menu, X } from 'lucide-react'
-import { brand } from '../config/brand'
 
 const nav = [
   { to: '/methodology', label: 'Methodology' },
@@ -13,16 +12,21 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-anwi-border/80 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-anwi-border bg-white/95 backdrop-blur-md">
       <div className="container-anwi flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
         <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <img src="/anwi-logo.svg" alt="" className="h-9 w-9 md:h-10 md:w-10" />
-          <div>
-            <span className="block text-sm font-bold tracking-tight text-anwi-navy md:text-base">
-              {brand.shortName}
+          <img src="/anwi-mark.svg" alt="" className="h-10 w-10 md:hidden" />
+          <img
+            src="/anwi-logo.svg"
+            alt="ANWI — Africa Next Workforce Index"
+            className="hidden h-11 w-auto md:block"
+          />
+          <div className="md:hidden">
+            <span className="block font-serif text-base font-bold tracking-tight text-anwi-navy">
+              ANWI
             </span>
-            <span className="hidden text-[11px] text-anwi-muted sm:block">
-              Africa Next Workforce Index
+            <span className="block text-[10px] font-medium uppercase tracking-wider text-anwi-muted">
+              Workforce Index
             </span>
           </div>
         </Link>
@@ -36,7 +40,7 @@ export function Header() {
                 `rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
                     ? 'text-anwi-gold-dark'
-                    : 'text-anwi-navy hover:text-anwi-gold-dark'
+                    : 'text-anwi-text hover:text-anwi-gold-dark'
                 }`
               }
             >
@@ -46,7 +50,7 @@ export function Header() {
           <a
             href="/anwi-methodology-v0.1.pdf"
             download
-            className="rounded-lg px-3 py-2 text-sm font-medium text-anwi-navy transition hover:text-anwi-gold-dark"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-anwi-text transition hover:text-anwi-gold-dark"
           >
             Report
           </a>
@@ -58,7 +62,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className="flex items-center gap-1 rounded-lg border border-anwi-border px-3 py-2 text-sm font-medium text-anwi-navy"
+            className="flex items-center gap-1 rounded-lg border border-anwi-border px-3 py-2 text-sm font-medium text-anwi-text"
             aria-label="Language: English"
           >
             EN
@@ -87,7 +91,7 @@ export function Header() {
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   `rounded-lg px-3 py-3 text-sm font-medium ${
-                    isActive ? 'bg-anwi-gold/10 text-anwi-gold-dark' : 'text-anwi-navy'
+                    isActive ? 'bg-anwi-gold/10 text-anwi-gold-dark' : 'text-anwi-text'
                   }`
                 }
               >
@@ -97,7 +101,7 @@ export function Header() {
             <a
               href="/anwi-methodology-v0.1.pdf"
               download
-              className="rounded-lg px-3 py-3 text-sm font-medium text-anwi-navy"
+              className="rounded-lg px-3 py-3 text-sm font-medium text-anwi-text"
             >
               Report (PDF)
             </a>

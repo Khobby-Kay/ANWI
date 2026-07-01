@@ -1,18 +1,21 @@
 @import 'tailwindcss';
 
 @theme {
+  /* AAGI-aligned institutional palette — refined gold, deep navy */
   --color-anwi-gold: #c8a951;
-  --color-anwi-gold-light: #d4bc6a;
-  --color-anwi-gold-dark: #a88b3a;
-  --color-anwi-navy: #0f1419;
-  --color-anwi-navy-mid: #1a2332;
-  --color-anwi-navy-light: #252f3f;
-  --color-anwi-muted: #6b7280;
-  --color-anwi-muted-light: #9ca3af;
-  --color-anwi-border: #e5e7eb;
+  --color-anwi-gold-light: #e8d5a3;
+  --color-anwi-gold-dark: #9e8440;
+  --color-anwi-gold-muted: #b8954a;
+  --color-anwi-navy: #0d1117;
+  --color-anwi-navy-mid: #161b22;
+  --color-anwi-navy-light: #21262d;
+  --color-anwi-text: #1a1a1a;
+  --color-anwi-muted: #555555;
+  --color-anwi-muted-light: #8b8b8b;
+  --color-anwi-border: #e2e4e8;
   --color-anwi-bg: #ffffff;
-  --color-anwi-bg-subtle: #f9fafb;
-  --color-anwi-bg-dark: #0a0e14;
+  --color-anwi-bg-subtle: #f6f7f9;
+  --color-anwi-bg-dark: #0d1117;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
 }
@@ -54,9 +57,9 @@ body {
 .hero-dark {
   @apply relative overflow-hidden bg-anwi-bg-dark text-white;
   background-image:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.12), transparent),
-    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(200, 169, 81, 0.06), transparent),
-    linear-gradient(180deg, #0a0e14 0%, #0f1419 50%, #1a2332 100%);
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(200, 169, 81, 0.04), transparent),
+    linear-gradient(180deg, #0d1117 0%, #161b22 50%, #21262d 100%);
 }
 
 .hero-title {
@@ -82,6 +85,10 @@ body {
 
 .btn-primary {
   @apply inline-flex items-center justify-center gap-2 rounded-lg bg-anwi-gold px-6 py-3 text-sm font-semibold text-anwi-navy transition hover:bg-anwi-gold-light;
+}
+
+.btn-primary-dark {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-anwi-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-anwi-navy-mid;
 }
 
 .btn-secondary {
@@ -111,9 +118,8 @@ body {
 .page-hero {
   @apply relative overflow-hidden bg-anwi-bg-dark text-white py-16 pb-12 md:py-24 md:pb-16 lg:py-28;
   background-image:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.12), transparent),
-    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(200, 169, 81, 0.06), transparent),
-    linear-gradient(180deg, #0a0e14 0%, #0f1419 50%, #1a2332 100%);
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
+    linear-gradient(180deg, #0d1117 0%, #161b22 50%, #21262d 100%);
 }
 
 .page-hero .section-label {

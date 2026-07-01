@@ -1,7 +1,7 @@
 import { pillars } from '../config/pillars'
 import type { CountryProfile } from '../config/countries'
 
-const COLORS = ['#c8a951', '#0f1419', '#a88b3a', '#6b7280']
+const COLORS = ['#c8a951', '#0d1117', '#9e8440', '#555555']
 
 type Props = {
   countries: CountryProfile[]

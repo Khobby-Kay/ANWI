@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect width="120" height="120" rx="24" fill="#0f1419"/>
-  <path d="M30 85V35h12l18 32 18-32h12v50h-10V55l-16 28h-8L40 55v30H30z" fill="#c8a951"/>
-  <circle cx="90" cy="30" r="6" fill="#c8a951" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none" role="img" aria-label="Africa Next Workforce Index">
+  <defs>
+    <linearGradient id="ring" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8D5A3"/>
+      <stop offset="0.55" stop-color="#C8A951"/>
+      <stop offset="1" stop-color="#9E8440"/>
+    </linearGradient>
+    <linearGradient id="continent" x1="16" y1="12" x2="48" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8D5A3"/>
+      <stop offset="1" stop-color="#B8954A"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="28" stroke="url(#ring)" stroke-width="1.5" fill="#0D1117"/>
+  <circle cx="32" cy="32" r="24.5" stroke="#C8A951" stroke-width="0.5" stroke-opacity="0.25"/>
+  <path fill="url(#continent)" d="M38.5 12.5c2.8-.4 5.6.6 7.6 2.6l1.4 1.8-.2 4.2-.8 3.4-1.6 4.2-2.4 5.2-2.2 4.4-3.4 3.6-4.2 2.2-4.4.8-3.8-.8-2.8-2.4-1.8-3.8-.8-4.2.2-4.4 1.2-4 2.4-3.2 3.2-2.4 2.8-1.2 3-.6 1.4-.2 2.6 0 3.6.4zm-14.2 8.4c-.8 1.2-1.2 2.6-1.2 4.2 0 2.2.8 4.2 2.2 5.8 1.2 1.4 2.8 2.4 4.6 2.8 1.8.4 3.6 0 5.2-.8 1.4-.8 2.6-1.8 3.6-3 .8-1.2 1.4-2.4 1.6-3.8.2-1.2 0-2.2-.6-2.8-.6-.6-1.4-.8-2.2-.6-.8.2-1.6.8-2.2 1.4-.8.8-1.4 1.8-1.8 2.8-.2.6-.4 1-.8 1.2-.4.2-.8.2-1.2 0-.6-.2-1-.8-1-1.6 0-1 .4-2.2 1-3.4.8-1.4 1.8-2.6 3-3.4 1-.6 2-1 2.8-1 .6-.2 1-.2 1.2 0z"/>
+  <path fill="url(#continent)" d="M44.5 38.5c.8.8 1 2 .6 3.1-.4 1.2-1.4 2.2-2.6 2.6l-.8.2c-.2-.8 0-1.6.4-2.2.6-.8 1.4-1.2 2.2-1.2.4 0 .8.2 1-.5-.2-.6-.6-1-1-1.2-.6-.4-1.2-.4-1.8-.2z"/>
+  <path d="M17 43c3.5-5.5 7.5-8.5 13-9.5" stroke="#E8D5A3" stroke-width="1.1" stroke-linecap="round" stroke-opacity="0.65"/>
+  <circle cx="17" cy="43" r="1.35" fill="#E8D5A3" fill-opacity="0.85"/>
+  <circle cx="24.5" cy="36.5" r="1.35" fill="#C8A951"/>
+  <circle cx="30" cy="33" r="1.6" fill="#E8D5A3"/>
+  <text x="72" y="36" font-family="Georgia, 'Libre Baskerville', serif" font-size="24" font-weight="700" fill="#0D1117" letter-spacing="-0.02em">ANWI</text>
+  <text x="72" y="52" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500" fill="#555555" letter-spacing="0.14em">AFRICA NEXT WORKFORCE INDEX</text>
 </svg>
