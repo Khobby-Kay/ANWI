@@ -18,9 +18,9 @@ export function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-dark relative flex min-h-[85vh] flex-col justify-center pb-0 pt-8 md:min-h-[90vh]">
-        <div className="container-anwi flex-1 py-16 md:py-24">
-          <div className="max-w-4xl">
+      <section className="hero-dark relative flex min-h-[88vh] flex-col justify-center pb-0 pt-8 md:min-h-[92vh]">
+        <div className="container-anwi flex-1 py-16 md:py-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
+          <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3">
               <span className="badge-gold">{brand.edition}</span>
               <Link
@@ -39,7 +39,7 @@ export function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a href={downloads.brief.path} download className="btn-primary">
                 <Download className="h-4 w-4" />
-                Download Full Brief
+                Download Intelligence Brief
               </a>
               <Link to="/methodology" className="btn-secondary">
                 View Methodology
@@ -51,8 +51,21 @@ export function HomePage() {
             </div>
           </div>
 
-          {/* Hero stats */}
-          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 md:grid-cols-4 md:gap-8">
+          <div className="relative mt-12 hidden lg:block">
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+              <img
+                src="/anwi-hero-africa.jpg"
+                alt="Africa at night — continental connectivity"
+                className="h-[420px] w-full object-cover object-center"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs uppercase tracking-widest text-white/40">
+              Continental workforce intelligence
+            </p>
+          </div>
+
+          {/* Hero stats — full width below grid */}
+          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 md:grid-cols-4 md:gap-8 lg:col-span-2">
             {[
               { value: countries.length, label: 'Nations' },
               { value: pillars.length, label: 'Pillars' },
@@ -182,7 +195,7 @@ export function HomePage() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href={downloads.brief.path} download className="btn-primary">
                   <Download className="h-4 w-4" />
-                  Download Full Brief
+                  Download Intelligence Brief
                 </a>
                 <a href={downloads.methodology.path} download className="btn-secondary">
                   <Download className="h-4 w-4" />

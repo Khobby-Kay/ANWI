@@ -57,9 +57,12 @@ body {
 .hero-dark {
   @apply relative overflow-hidden bg-anwi-bg-dark text-white;
   background-image:
+    linear-gradient(105deg, rgba(13, 17, 23, 0.97) 0%, rgba(13, 17, 23, 0.88) 42%, rgba(13, 17, 23, 0.55) 68%, rgba(13, 17, 23, 0.35) 100%),
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
-    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(200, 169, 81, 0.04), transparent),
-    linear-gradient(180deg, #0d1117 0%, #161b22 50%, #21262d 100%);
+    url('/anwi-hero-africa.jpg');
+  background-size: cover, auto, cover;
+  background-position: center, center, center right;
+  background-repeat: no-repeat;
 }
 
 .hero-title {
@@ -118,8 +121,12 @@ body {
 .page-hero {
   @apply relative overflow-hidden bg-anwi-bg-dark text-white py-16 pb-12 md:py-24 md:pb-16 lg:py-28;
   background-image:
+    linear-gradient(105deg, rgba(13, 17, 23, 0.94) 0%, rgba(13, 17, 23, 0.82) 50%, rgba(13, 17, 23, 0.6) 100%),
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200, 169, 81, 0.08), transparent),
-    linear-gradient(180deg, #0d1117 0%, #161b22 50%, #21262d 100%);
+    url('/anwi-hero-africa.jpg');
+  background-size: cover, auto, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat;
 }
 
 .page-hero .section-label {

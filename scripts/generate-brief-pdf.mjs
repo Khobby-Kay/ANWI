@@ -1,24 +1,79 @@
 /**
- * Generates public/anwi-executive-brief-v0.1.pdf from docs/anwi-executive-brief-v0.1.md
- * Run: node scripts/generate-brief-pdf.mjs
+ * Generates public/anwi-executive-brief-v0.1.pdf — AAGI Intelligence Brief style
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import PDFDocument from 'pdfkit'
+import {
+  bodyText,
+  bulletList,
+  colors,
+  drawBriefHeader,
+  drawTable,
+  ensureSpace,
+  fonts,
+  layout,
+  pageWidth,
+  sectionTitle,
+  statGrid,
+} from './pdf/theme.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, '..')
-const mdPath = path.join(root, 'docs', 'anwi-executive-brief-v0.1.md')
+const dataPath = path.join(root, 'scripts', 'data', 'pilot-data.json')
 const outPath = path.join(root, 'public', 'anwi-executive-brief-v0.1.pdf')
 
-const md = fs.readFileSync(mdPath, 'utf8')
+const { countries, pillars, exportedAt } = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+const today = exportedAt || new Date().toISOString().slice(0, 10)
+
+const REGION_LABELS = {
+  East: 'East Africa',
+  West: 'West Africa',
+  North: 'North Africa',
+  Southern: 'Southern Africa',
+  Central: 'Central Africa',
+}
+
+const PILLAR_ABBR = {
+  'education-pipeline': 'Edu',
+  'entry-work-ai': 'Entry',
+  'genz-readiness': 'GenZ',
+  'skills-infrastructure': 'Skills',
+  'policy-participation': 'Policy',
+  'talent-mobility': 'Mobility',
+}
+
+const totalYouthM = countries.reduce((s, c) => s + c.populationUnder25M, 0)
+const continentalAvg = Math.round(
+  countries.reduce((s, c) => s + c.overallScore, 0) / countries.length,
+)
+const strong = countries.filter((c) => c.overallScore >= 60).length
+const emerging = countries.filter((c) => c.overallScore >= 45 && c.overallScore < 60).length
+const constrained = countries.filter((c) => c.overallScore < 45).length
+
+const regional = ['East', 'West', 'North', 'Southern', 'Central']
+  .map((region) => {
+    const inRegion = countries.filter((c) => c.region === region)
+    if (!inRegion.length) return null
+    const youthM = inRegion.reduce((s, c) => s + c.populationUnder25M, 0)
+    return {
+      label: REGION_LABELS[region],
+      count: inRegion.length,
+      avg: Math.round(inRegion.reduce((s, c) => s + c.overallScore, 0) / inRegion.length),
+      youthShare: Math.round((youthM / totalYouthM) * 100),
+    }
+  })
+  .filter(Boolean)
+
+const sorted = [...countries].sort((a, b) => a.rank - b.rank)
+const topFive = sorted.slice(0, 5)
 
 const doc = new PDFDocument({
   size: 'A4',
-  margins: { top: 72, bottom: 72, left: 72, right: 72 },
+  margins: { top: 0, bottom: 54, left: layout.margin, right: layout.margin },
   info: {
-    Title: 'ANWI Executive Brief v0.1',
+    Title: 'ANWI Intelligence Brief — July 2026',
     Author: 'Africa Next Workforce Index',
     Subject: 'Pilot Edition 2026',
   },
@@ -27,103 +82,157 @@ const doc = new PDFDocument({
 const stream = fs.createWriteStream(outPath)
 doc.pipe(stream)
 
-const navy = '#0f2744'
-const slate = '#334155'
-const gold = '#c9a227'
-
-function heading(text, size = 14) {
-  doc.moveDown(0.6)
-  doc.font('Helvetica-Bold').fontSize(size).fillColor(navy).text(text, { continued: false })
-  doc.moveDown(0.3)
+let pageNum = 1
+function footer() {
+  doc.font(fonts.body).fontSize(7).fillColor(colors.light)
+  doc.text(
+    `ANWI Intelligence Brief — ${today}  |  Page ${pageNum}`,
+    layout.margin,
+    layout.footerY + 16,
+    { width: pageWidth(doc), align: 'center' },
+  )
+  pageNum++
 }
 
-function body(text) {
-  doc.font('Helvetica').fontSize(10).fillColor(slate).text(text, {
-    align: 'left',
-    lineGap: 3,
-  })
-}
-
-function bullet(text) {
-  doc.font('Helvetica').fontSize(10).fillColor(slate).text(`•  ${text}`, {
-    indent: 12,
-    lineGap: 2,
-  })
-}
-
-doc.font('Helvetica-Bold').fontSize(22).fillColor(navy).text('Africa Next Workforce Index (ANWI)', {
-  align: 'center',
+drawBriefHeader(doc, {
+  title: 'ANWI Intelligence Brief',
+  subtitle: 'Africa Next Workforce Index — Comprehensive Platform Summary',
+  meta: [
+    `Generated: ${today} | Data as of: ${today}`,
+    'Classification: Open — Redistribution permitted with full attribution',
+  ],
 })
-doc.moveDown(0.5)
-doc.font('Helvetica').fontSize(16).fillColor(gold).text('Executive Brief — Version 0.1', {
-  align: 'center',
-})
-doc.moveDown(1)
-doc.font('Helvetica').fontSize(11).fillColor(slate).text('Pilot Edition 2026', { align: 'center' })
-doc.moveDown(2)
-doc.font('Helvetica').fontSize(10).fillColor(slate)
-doc.text('Publisher: Africa Next Workforce Index', { align: 'center' })
-doc.text('Contact: research@anwi.africa', { align: 'center' })
-doc.text('Founder: Aikins Armstrong', { align: 'center' })
-doc.text('Date: July 2026', { align: 'center' })
+
+sectionTitle(doc, 1, 'Platform Coverage at a Glance')
+statGrid(doc, [
+  { value: countries.length, label: 'Countries Assessed' },
+  { value: pillars.length, label: 'Pillars' },
+  { value: 18, label: 'Indicators' },
+  { value: `${Math.round(totalYouthM)}M`, label: 'Youth Under 25' },
+  { value: continentalAvg, label: 'Pilot Average' },
+  { value: strong, label: 'Strong Converters' },
+])
+bodyText(
+  doc,
+  'The ANWI platform measures youth-to-workforce conversion across a 20-country pilot cohort through six weighted pillars: education pipeline, entry-level work & AI exposure, institutional GenZ readiness, digital skills infrastructure, policy participation, and cross-border talent flow.',
+)
+
+sectionTitle(doc, 2, 'Youth Conversion Landscape')
+bodyText(
+  doc,
+  `${strong} countries score ≥60 (strong converters). ${emerging} are emerging (45–59). ${constrained} remain structurally constrained (<45). Conversion capacity is uneven — digital skills infrastructure and entry-level hiring pathways diverge most sharply between leaders and laggards.`,
+)
+bodyText(doc, 'Regional Conversion Average', { align: 'left' })
+drawTable(
+  doc,
+  ['Region', 'Countries', 'Avg Score', 'Youth Share'],
+  regional.map((r) => [r.label, r.count, r.avg, `${r.youthShare}%`]),
+  { colWidths: [140, 70, 70, 80], fontSize: 8.5 },
+)
+
+bodyText(doc, 'Top 5 Pilot Leaders by ANWI Score')
+drawTable(
+  doc,
+  ['#', 'Country', 'Score', 'Highlight'],
+  topFive.map((c) => [c.rank, c.name, `${c.overallScore}/100`, c.highlights[0] || '']),
+  { colWidths: [28, 100, 55, pageWidth(doc) - 183], fontSize: 8 },
+)
+
+footer()
 doc.addPage()
+doc.y = layout.margin
 
-const sections = md.split(/^## /m).slice(1)
+sectionTitle(doc, 3, 'Pilot Cohort — Full ANWI Assessment')
+bodyText(
+  doc,
+  'All 20 pilot countries assessed using the complete ANWI methodology (6 pillars, 18 indicators). Scores are normalized 0–100. Pillar abbreviations: Edu, Entry, GenZ, Skills, Policy, Mobility.',
+)
 
-for (const section of sections) {
-  const [titleLine, ...rest] = section.split('\n')
-  const title = titleLine.replace(/^#+\s*/, '').trim()
-  const content = rest.join('\n').trim()
+const abbrHeaders = pillars.map((p) => PILLAR_ABBR[p.id] || p.shortName.slice(0, 5))
+const tableRows = sorted.map((c) => [
+  c.rank,
+  c.name,
+  c.overallScore,
+  ...pillars.map((p) => c.pillars[p.id]),
+])
+const colW = [22, 95, 38, ...Array(6).fill(34)]
+drawTable(doc, ['#', 'Country', 'ANWI', ...abbrHeaders], tableRows, {
+  colWidths: colW,
+  fontSize: 7,
+  rowH: 16,
+})
 
-  if (doc.y > doc.page.height - 120) doc.addPage()
+bodyText(
+  doc,
+  `${sorted[0].name} leads with ${sorted[0].overallScore}/100. The gap between pillar scores reveals that policy intent alone does not capture conversion capacity — skills infrastructure and entry-level pathways often lag policy scores.`,
+)
 
-  heading(title)
+sectionTitle(doc, 4, 'Continental Pillar Averages')
+drawTable(
+  doc,
+  ['Pillar', 'Weight', 'Pilot Avg'],
+  pillars.map((p) => {
+    const avg = Math.round(
+      countries.reduce((s, c) => s + c.pillars[p.id], 0) / countries.length,
+    )
+    return [p.name, `${(p.weight * 100).toFixed(0)}%`, avg]
+  }),
+  { colWidths: [240, 60, 60], fontSize: 8.5 },
+)
 
-  const blocks = content.split(/\n\n+/)
-  for (const block of blocks) {
-    const trimmed = block.trim()
-    if (!trimmed || trimmed.startsWith('---')) continue
+sectionTitle(doc, 5, 'Skills & Conversion Spotlight')
+const skillsLeader = [...countries].sort(
+  (a, b) => b.pillars['skills-infrastructure'] - a.pillars['skills-infrastructure'],
+)[0]
+bodyText(
+  doc,
+  `Digital skills infrastructure shows the widest score spread of any pillar. ${skillsLeader.name} leads on skills infrastructure (${skillsLeader.pillars['skills-infrastructure']}/100). Bootcamp density, youth connectivity, and AI literacy programs concentrate in urban hubs while youth population growth continues continent-wide.`,
+)
 
-    if (trimmed.startsWith('|')) {
-      const rows = trimmed.split('\n').filter((row) => row.includes('|') && !row.includes('---'))
-      for (const row of rows) {
-        const cells = row
-          .split('|')
-          .map((cell) => cell.trim())
-          .filter(Boolean)
-        if (cells.length >= 2) {
-          bullet(`${cells[0]}: ${cells.slice(1).join(' — ')}`)
-        }
-      }
-      doc.moveDown(0.3)
-      continue
-    }
+ensureSpace(doc, 120)
+sectionTitle(doc, 6, 'Intelligence Tools Overview')
+drawTable(
+  doc,
+  ['Tool', 'Coverage', 'Description'],
+  [
+    ['Country Compare', `${countries.length} countries`, 'Side-by-side pillar scores for up to four pilot countries'],
+    ['Executive Summary', 'Live', 'Headline intelligence, regional breakdown, full assessment table'],
+    ['Methodology', '6 pillars', 'Scoring framework, indicators, limitations, and data sources'],
+    ['Executive Brief', 'PDF', 'This document — downloadable intelligence summary'],
+    ['Methodology Report', 'PDF', 'Full methodology paper with detailed framework'],
+  ],
+  { colWidths: [110, 80, pageWidth(doc) - 190], fontSize: 8 },
+)
 
-    if (trimmed.startsWith('- ') || trimmed.startsWith('1. ')) {
-      const items = trimmed.split('\n')
-      for (const item of items) {
-        const clean = item.replace(/^[-*\d.]+\s*/, '').replace(/\*\*/g, '')
-        if (clean) bullet(clean)
-      }
-      doc.moveDown(0.3)
-      continue
-    }
+footer()
+doc.addPage()
+doc.y = layout.margin
 
-    const clean = trimmed
-      .replace(/\*\*/g, '')
-      .replace(/\*([^*]+)\*/g, '$1')
-      .replace(/^#+\s*/gm, '')
-      .replace(/`/g, '')
-      .replace(/```[\s\S]*?```/g, '')
-    if (clean) {
-      body(clean)
-      doc.moveDown(0.4)
-    }
+sectionTitle(doc, 7, 'Strategic Implications')
+bulletList(doc, [
+  'Governments: Move beyond enrollment metrics to track graduate employment linkage, internship density, and AI literacy availability.',
+  'Employers: Entry-level role design and GenZ-ready management are competitive differentiators where youth supply exceeds absorption.',
+  'Educators: TVET alignment and bootcamp-to-employer pipelines are highest-leverage interventions in constrained markets.',
+  'Investors: Digital skills infrastructure investment yields measurable conversion gains; policy-only interventions show limited impact alone.',
+])
 
-    if (doc.y > doc.page.height - 80) doc.addPage()
-  }
-}
+sectionTitle(doc, 8, 'Methodology & Data Sources')
+bodyText(
+  doc,
+  'All data is drawn from the ANWI platform pilot databases, aggregating official government publications, ILO, UNESCO, World Bank, African Union research, and ANWI expert panel review. The methodology is structured around 6 pillars and 18 indicators per country. Full documentation: anwi.vercel.app/methodology',
+)
 
+sectionTitle(doc, 9, 'Citation')
+bodyText(
+  doc,
+  `Africa Next Workforce Index (${new Date().getFullYear()}). "ANWI Intelligence Brief: The State of Africa's Next Workforce." ANWI. Retrieved ${today}. Available at: https://anwi.vercel.app/executive-summary`,
+)
+bodyText(
+  doc,
+  `© ${new Date().getFullYear()} Africa Next Workforce Index. This brief is generated from pilot data and may be redistributed with full attribution.`,
+)
+
+footer()
 doc.end()
 
 stream.on('finish', () => {

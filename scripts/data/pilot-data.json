@@ -1,0 +1,449 @@
+{
+  "exportedAt": "2026-07-01",
+  "countries": [
+    {
+      "code": "KE",
+      "name": "Kenya",
+      "region": "East",
+      "overallScore": 68,
+      "rank": 3,
+      "populationUnder25M": 22.4,
+      "pillars": {
+        "education-pipeline": 72,
+        "entry-work-ai": 71,
+        "genz-readiness": 65,
+        "skills-infrastructure": 78,
+        "policy-participation": 62,
+        "talent-mobility": 70
+      },
+      "highlights": [
+        "Strongest digital skills bootcamp density in East Africa",
+        "Nairobi hub drives entry-level tech hiring"
+      ]
+    },
+    {
+      "code": "NG",
+      "name": "Nigeria",
+      "region": "West",
+      "overallScore": 61,
+      "rank": 7,
+      "populationUnder25M": 64.8,
+      "pillars": {
+        "education-pipeline": 58,
+        "entry-work-ai": 64,
+        "genz-readiness": 59,
+        "skills-infrastructure": 66,
+        "policy-participation": 55,
+        "talent-mobility": 63
+      },
+      "highlights": [
+        "Largest youth population on the index — scale opportunity and pressure",
+        "Lagos & Abuja drive disproportionate entry-level tech demand"
+      ]
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "region": "Southern",
+      "overallScore": 66,
+      "rank": 4,
+      "populationUnder25M": 18.2,
+      "pillars": {
+        "education-pipeline": 64,
+        "entry-work-ai": 63,
+        "genz-readiness": 62,
+        "skills-infrastructure": 71,
+        "policy-participation": 68,
+        "talent-mobility": 67
+      },
+      "highlights": [
+        "Mature policy frameworks but youth unemployment remains structurally high",
+        "Strong corporate graduate programs in finance and telecom"
+      ]
+    },
+    {
+      "code": "GH",
+      "name": "Ghana",
+      "region": "West",
+      "overallScore": 64,
+      "rank": 5,
+      "populationUnder25M": 11.3,
+      "pillars": {
+        "education-pipeline": 66,
+        "entry-work-ai": 60,
+        "genz-readiness": 63,
+        "skills-infrastructure": 67,
+        "policy-participation": 65,
+        "talent-mobility": 62
+      },
+      "highlights": [
+        "Stable democratic governance supports youth policy continuity",
+        "Accra emerging as a West African talent hub"
+      ]
+    },
+    {
+      "code": "RW",
+      "name": "Rwanda",
+      "region": "East",
+      "overallScore": 71,
+      "rank": 1,
+      "populationUnder25M": 5.1,
+      "pillars": {
+        "education-pipeline": 74,
+        "entry-work-ai": 68,
+        "genz-readiness": 72,
+        "skills-infrastructure": 75,
+        "policy-participation": 73,
+        "talent-mobility": 64
+      },
+      "highlights": [
+        "Highest pilot score — strong institutional coordination on youth skills",
+        "Kigali Innovation City anchors digital talent pipeline"
+      ]
+    },
+    {
+      "code": "EG",
+      "name": "Egypt",
+      "region": "North",
+      "overallScore": 59,
+      "rank": 9,
+      "populationUnder25M": 28.6,
+      "pillars": {
+        "education-pipeline": 62,
+        "entry-work-ai": 57,
+        "genz-readiness": 56,
+        "skills-infrastructure": 63,
+        "policy-participation": 60,
+        "talent-mobility": 55
+      },
+      "highlights": [
+        "Large graduate output with mismatch to private-sector demand",
+        "Cairo tech corridor growing but concentrated"
+      ]
+    },
+    {
+      "code": "ET",
+      "name": "Ethiopia",
+      "region": "East",
+      "overallScore": 52,
+      "rank": 17,
+      "populationUnder25M": 35.2,
+      "pillars": {
+        "education-pipeline": 54,
+        "entry-work-ai": 48,
+        "genz-readiness": 50,
+        "skills-infrastructure": 51,
+        "policy-participation": 55,
+        "talent-mobility": 52
+      },
+      "highlights": [
+        "Second-largest youth cohort — industrial parks expanding entry-level manufacturing",
+        "Digital infrastructure gap limits AI exposure at scale"
+      ]
+    },
+    {
+      "code": "MA",
+      "name": "Morocco",
+      "region": "North",
+      "overallScore": 63,
+      "rank": 6,
+      "populationUnder25M": 10.8,
+      "pillars": {
+        "education-pipeline": 65,
+        "entry-work-ai": 61,
+        "genz-readiness": 60,
+        "skills-infrastructure": 66,
+        "policy-participation": 64,
+        "talent-mobility": 62
+      },
+      "highlights": [
+        "Strong Francophone-Europe talent bridge via outsourcing sector",
+        "Casablanca & Rabat lead on graduate placement programs"
+      ]
+    },
+    {
+      "code": "SN",
+      "name": "Senegal",
+      "region": "West",
+      "overallScore": 58,
+      "rank": 10,
+      "populationUnder25M": 6.8,
+      "pillars": {
+        "education-pipeline": 60,
+        "entry-work-ai": 55,
+        "genz-readiness": 57,
+        "skills-infrastructure": 60,
+        "policy-participation": 59,
+        "talent-mobility": 56
+      },
+      "highlights": [
+        "Dakar digital ecosystem growing via francophone tech networks",
+        "Emerging focus on youth entrepreneurship through DER/FJ"
+      ]
+    },
+    {
+      "code": "TZ",
+      "name": "Tanzania",
+      "region": "East",
+      "overallScore": 54,
+      "rank": 15,
+      "populationUnder25M": 24.1,
+      "pillars": {
+        "education-pipeline": 56,
+        "entry-work-ai": 50,
+        "genz-readiness": 52,
+        "skills-infrastructure": 53,
+        "policy-participation": 57,
+        "talent-mobility": 54
+      },
+      "highlights": [
+        "Dar es Salaam hub expanding but rural youth connectivity lags",
+        "Policy momentum on vocational reform under National Development Vision"
+      ]
+    },
+    {
+      "code": "UG",
+      "name": "Uganda",
+      "region": "East",
+      "overallScore": 57,
+      "rank": 12,
+      "populationUnder25M": 16.8,
+      "pillars": {
+        "education-pipeline": 58,
+        "entry-work-ai": 56,
+        "genz-readiness": 55,
+        "skills-infrastructure": 60,
+        "policy-participation": 58,
+        "talent-mobility": 54
+      },
+      "highlights": [
+        "Kampala tech ecosystem growing via mobile-money and fintech talent",
+        "Youth population growth outpaces formal job creation"
+      ]
+    },
+    {
+      "code": "CI",
+      "name": "Côte d'Ivoire",
+      "region": "West",
+      "overallScore": 56,
+      "rank": 13,
+      "populationUnder25M": 13.2,
+      "pillars": {
+        "education-pipeline": 57,
+        "entry-work-ai": 54,
+        "genz-readiness": 55,
+        "skills-infrastructure": 58,
+        "policy-participation": 57,
+        "talent-mobility": 55
+      },
+      "highlights": [
+        "Abidjan anchors francophone West Africa outsourcing growth",
+        "Post-conflict recovery driving vocational reform investment"
+      ]
+    },
+    {
+      "code": "TN",
+      "name": "Tunisia",
+      "region": "North",
+      "overallScore": 60,
+      "rank": 8,
+      "populationUnder25M": 3.4,
+      "pillars": {
+        "education-pipeline": 68,
+        "entry-work-ai": 55,
+        "genz-readiness": 58,
+        "skills-infrastructure": 62,
+        "policy-participation": 59,
+        "talent-mobility": 57
+      },
+      "highlights": [
+        "Strong tertiary education tradition but graduate unemployment persists",
+        "Tunis and Sfax tech corridors expanding offshore services"
+      ]
+    },
+    {
+      "code": "MU",
+      "name": "Mauritius",
+      "region": "East",
+      "overallScore": 69,
+      "rank": 2,
+      "populationUnder25M": 0.3,
+      "pillars": {
+        "education-pipeline": 72,
+        "entry-work-ai": 67,
+        "genz-readiness": 70,
+        "skills-infrastructure": 74,
+        "policy-participation": 68,
+        "talent-mobility": 71
+      },
+      "highlights": [
+        "Highest connectivity and skills infrastructure in the pilot cohort",
+        "Small population but strong conversion to offshore and financial services roles"
+      ]
+    },
+    {
+      "code": "BW",
+      "name": "Botswana",
+      "region": "Southern",
+      "overallScore": 58,
+      "rank": 11,
+      "populationUnder25M": 0.9,
+      "pillars": {
+        "education-pipeline": 62,
+        "entry-work-ai": 54,
+        "genz-readiness": 57,
+        "skills-infrastructure": 60,
+        "policy-participation": 61,
+        "talent-mobility": 55
+      },
+      "highlights": [
+        "Stable governance supports consistent youth policy implementation",
+        "Diamond economy diversification creating new entry-level sectors"
+      ]
+    },
+    {
+      "code": "CM",
+      "name": "Cameroon",
+      "region": "Central",
+      "overallScore": 53,
+      "rank": 16,
+      "populationUnder25M": 12.6,
+      "pillars": {
+        "education-pipeline": 54,
+        "entry-work-ai": 51,
+        "genz-readiness": 52,
+        "skills-infrastructure": 54,
+        "policy-participation": 55,
+        "talent-mobility": 52
+      },
+      "highlights": [
+        "Bilingual economy offers unique regional talent bridge",
+        "Douala and Yaoundé tech scenes emerging but concentrated"
+      ]
+    },
+    {
+      "code": "DZ",
+      "name": "Algeria",
+      "region": "North",
+      "overallScore": 55,
+      "rank": 14,
+      "populationUnder25M": 12.1,
+      "pillars": {
+        "education-pipeline": 58,
+        "entry-work-ai": 50,
+        "genz-readiness": 53,
+        "skills-infrastructure": 56,
+        "policy-participation": 57,
+        "talent-mobility": 50
+      },
+      "highlights": [
+        "Large graduate output with public-sector hiring dependency",
+        "Youth unemployment a persistent policy priority"
+      ]
+    },
+    {
+      "code": "AO",
+      "name": "Angola",
+      "region": "Southern",
+      "overallScore": 50,
+      "rank": 18,
+      "populationUnder25M": 8.9,
+      "pillars": {
+        "education-pipeline": 48,
+        "entry-work-ai": 47,
+        "genz-readiness": 49,
+        "skills-infrastructure": 51,
+        "policy-participation": 53,
+        "talent-mobility": 50
+      },
+      "highlights": [
+        "Oil-dependent economy limits diversified entry-level job creation",
+        "Luanda digital sector growing from low base"
+      ]
+    },
+    {
+      "code": "MZ",
+      "name": "Mozambique",
+      "region": "Southern",
+      "overallScore": 49,
+      "rank": 19,
+      "populationUnder25M": 14.5,
+      "pillars": {
+        "education-pipeline": 50,
+        "entry-work-ai": 46,
+        "genz-readiness": 48,
+        "skills-infrastructure": 47,
+        "policy-participation": 52,
+        "talent-mobility": 50
+      },
+      "highlights": [
+        "Maputo corridor shows early tech and services growth",
+        "Connectivity and rural-urban divide constrain youth conversion at scale"
+      ]
+    },
+    {
+      "code": "CD",
+      "name": "Democratic Republic of the Congo",
+      "region": "Central",
+      "overallScore": 47,
+      "rank": 20,
+      "populationUnder25M": 38.5,
+      "pillars": {
+        "education-pipeline": 46,
+        "entry-work-ai": 44,
+        "genz-readiness": 45,
+        "skills-infrastructure": 48,
+        "policy-participation": 50,
+        "talent-mobility": 48
+      },
+      "highlights": [
+        "Largest youth cohort in Central Africa — conversion at scale is the challenge",
+        "Kinshasa fintech and mobile ecosystem offers early digital entry points"
+      ]
+    }
+  ],
+  "pillars": [
+    {
+      "id": "education-pipeline",
+      "name": "Education-to-Economy Pipeline",
+      "shortName": "Education Pipeline",
+      "weight": 0.2,
+      "description": "How effectively schooling, TVET, and higher education connect graduates to productive work."
+    },
+    {
+      "id": "entry-work-ai",
+      "name": "Entry-Level Work & AI Exposure",
+      "shortName": "Entry Work & AI",
+      "weight": 0.18,
+      "description": "Availability of first jobs, internships, and early-career roles that expose youth to digital and AI tools."
+    },
+    {
+      "id": "genz-readiness",
+      "name": "Institutional GenZ Readiness",
+      "shortName": "GenZ Readiness",
+      "weight": 0.16,
+      "description": "Whether employers, public sector, and educators are structured to absorb and develop Gen Z talent."
+    },
+    {
+      "id": "skills-infrastructure",
+      "name": "Digital & AI Skills Infrastructure",
+      "shortName": "Skills Infrastructure",
+      "weight": 0.18,
+      "description": "Breadth of coding bootcamps, digital literacy programs, connectivity, and AI learning pathways."
+    },
+    {
+      "id": "policy-participation",
+      "name": "Policy & Economic Participation",
+      "shortName": "Policy & Participation",
+      "weight": 0.14,
+      "description": "Youth employment policy, entrepreneurship support, and inclusion of young people in economic planning."
+    },
+    {
+      "id": "talent-mobility",
+      "name": "Cross-Border Talent Flow",
+      "shortName": "Talent Mobility",
+      "weight": 0.14,
+      "description": "Regional mobility, remote-work access, and pathways for African youth to compete in continental and global markets."
+    }
+  ]
+}

@@ -44,7 +44,7 @@ export function ExecutiveSummaryPage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a href={downloads.brief.path} download className="btn-primary">
               <Download className="h-4 w-4" />
-              Download Full Brief
+              Download Intelligence Brief
             </a>
             <Link to="/methodology" className="btn-secondary">
               View Methodology
@@ -396,7 +396,7 @@ export function ExecutiveSummaryPage() {
           <div className="mt-8 flex flex-wrap gap-4">
             <a href={downloads.brief.path} download className="btn-primary">
               <Download className="h-4 w-4" />
-              Download Full Brief
+              Download Intelligence Brief
             </a>
             <Link to="/methodology" className="btn-outline">
               Full Methodology
